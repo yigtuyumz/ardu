@@ -1,0 +1,56 @@
+/*
+ * Libraries (Dependencies)
+ */
+#include <libmy.h>
+////////////////////////////////////////////////////////////////////////////////
+
+/*
+ * Constants
+ */
+#define SECOND 1000
+#define DIGITAL_PORT_NO 4
+////////////////////////////////////////////////////////////////////////////////
+
+/*
+ * Globals
+ */
+
+
+////////////////////////////////////////////////////////////////////////////////
+
+/*
+ * Ardunio predefined 'setup' function
+ */
+void
+setup(void)
+{
+	Serial.begin(9600);
+	pinMode(DIGITAL_PORT_NO, OUTPUT);
+}
+////////////////////////////////////////////////////////////////////////////////
+
+/*
+ * Custom functions / Others
+ */
+void
+switch_led(long on, long off)
+{
+	digitalWrite(DIGITAL_PORT_NO, HIGH);
+	delay(on);
+	digitalWrite(DIGITAL_PORT_NO, LOW);
+	delay(off);
+}
+////////////////////////////////////////////////////////////////////////////////
+
+/*
+ * Ardunio predefined 'loop' function; which runs forever.
+ */
+void
+loop(void)
+{
+	/*
+	 * Broken light bulb effect with randomizing on-off durations.
+	 */
+	switch_led(random(10, 3000), random(10, 100));
+}
+////////////////////////////////////////////////////////////////////////////////
